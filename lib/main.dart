@@ -4,7 +4,7 @@ import 'package:store_app/view/add_product.dart';
 import 'package:store_app/view/home_view.dart';
 import 'package:store_app/view/update_product.dart';
 
-import 'cubits/products/home_cubit.dart';
+import 'cubits/products/get_products_cbutit.dart';
 
 void main() {
   runApp(const MyApp());

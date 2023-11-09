@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/widgets/product_item.dart';
 
-import '../cubits/products/home_cubit.dart';
-import '../cubits/products/home_state.dart';
+import '../cubits/products/get_products_cbutit.dart';
+import '../cubits/products/get_products_state.dart';
 
 class ProductsGridView extends StatelessWidget {
   const ProductsGridView({super.key});

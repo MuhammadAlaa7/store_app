@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/cubits/products/home_cubit.dart';
+import 'package:store_app/cubits/products/get_products_cbutit.dart';
 import '../widgets/category_item.dart';
 import '../widgets/home_app_bar.dart';
 import '../widgets/products_grid_view.dart';
@@ -11,36 +11,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AllProductsCubit cubit = BlocProvider.of<AllProductsCubit>(context);
-    final List<Widget> categories = [
-      CategoryItem(
-        onTap: () {
-          cubit.productsByCategory('electronics');
-        },
-        image: 'assets/images/electronics.jpg',
-        label: 'Electronics',
-      ),
-      CategoryItem(
-        onTap: () {
-          cubit.productsByCategory('jewelery');
-        },
-        image: 'assets/images/jewelry.jpg',
-        label: 'Jewelery',
-      ),
-      CategoryItem(
-        onTap: () {
-          cubit.productsByCategory('men\'s clothing');
-        },
-        image: 'assets/images/men.jpg',
-        label: 'Men\'s clothing',
-      ),
-      CategoryItem(
-        onTap: () {
-          cubit.productsByCategory('women\'s clothing');
-        },
-        image: 'assets/images/women.jpg',
-        label: 'Women\'s clothing',
-      ),
-    ];
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -53,7 +23,7 @@ class HomeView extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            categoriesList(categories),
+            categoriesList(cubit.categories),
             const SizedBox(height: 30),
             const ProductsGridView(),
           ],
@@ -81,6 +51,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
+  //                 ****    دي الطريقة القديمه من غير البلوك  ******
 //   FutureBuilder<List<Product>> productsList() {
 //     return FutureBuilder(
 //       future: future,
