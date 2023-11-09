@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/view/add_product.dart';
-import 'package:store_app/view/home.dart';
+import 'package:store_app/view/home_view.dart';
 import 'package:store_app/view/update_product.dart';
 
-import 'services/all_products.dart';
+import 'cubits/products/home_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,14 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => HomeView(),
-        UpdateProductView.updateViewId: (context) => UpdateProductView(),
-        AddProductView.addProductViewId: (context) => AddProductView(),
-      },
-      initialRoute: '/',
+    return BlocProvider(
+      create: (context) => AllProductsCubit()..getAllProducts(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => HomeView(),
+          UpdateProductView.updateViewId: (context) => UpdateProductView(),
+          AddProductView.addProductViewId: (context) => AddProductView(),
+        },
+        initialRoute: '/',
+      ),
     );
   }
 }
